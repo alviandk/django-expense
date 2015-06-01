@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<django-objects version="1.0">
+ <!-- type -->
+ <object pk="1" model="expense.type">
+  <field type="CharField" name="name">Test Type</field>
+ </object>
+ <object pk="2" model="expense.type">
+  <field type="CharField" name="name">Type to change</field>
+ </object>
+ <object pk="3" model="expense.type">
+  <field type="CharField" name="name">Type to delete</field>
+ </object>
+ <!-- category -->
+ <object pk="1" model="expense.category">
+  <field type="CharField" name="name">Category 1</field>
+  <field to="expense.type" name="type" rel="ManyToOneRel">1</field>
+ </object>
+ <object pk="2" model="expense.category">
+  <field type="CharField" name="name">Category to modify</field>
+  <field to="expense.type" name="type" rel="ManyToOneRel">1</field>
+ </object>
+ <object pk="3" model="expense.category">
+  <field type="CharField" name="name">Category to delete</field>
+  <field to="expense.type" name="type" rel="ManyToOneRel">1</field>
+ </object>
+ <!-- expenses -->
+ <object pk="1" model="expense.expense">
+  <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
+  <field to="expense.category" name="category" rel="ManyToOneRel">1</field>
+  <field type="DateField" name="date">2009-02-02</field>
+  <field type="CharField" name="description">expense 1</field>
+  <field type="IntegerField" name="amount">123</field>
+ </object>
+ <object pk="2" model="expense.expense">
+  <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
+  <field to="expense.category" name="category" rel="ManyToOneRel">1</field>
+  <field type="DateField" name="date">2009-02-02</field>
+  <field type="CharField" name="description">expense to change</field>
+  <field type="IntegerField" name="amount">123</field>
+ </object>
+ <object pk="3" model="expense.expense">
+  <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
+  <field to="expense.category" name="category" rel="ManyToOneRel">1</field>
+  <field type="DateField" name="date">2009-02-02</field>
+  <field type="CharField" name="description">expense to delete</field>
+  <field type="IntegerField" name="amount">123</field>
+ </object>
+</django-objects>

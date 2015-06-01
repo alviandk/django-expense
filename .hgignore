@@ -1,0 +1,16 @@
+syntax: glob
+*.egg-info
+*.pyc
+*.*~
+*.orig
+*.old
+.*.swp
+build
+dist
+MANIFEST
+_build
+_static
+.project
+.settings
+*.sqlite3
+.dict-validwords

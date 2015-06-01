@@ -1,0 +1,11 @@
+Thanks for downloading django-expense.
+
+This application requires Python 2.4 or later and Django 1.2.0 or newer.
+
+To install django-expense, run the following command inside this directory::
+
+    python setup.py install
+
+Depending on your system configuration, you may need to prefix the
+this command with ``sudo`` and supply your password to perform a
+system-wide installation.

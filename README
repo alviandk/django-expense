@@ -1,0 +1,15 @@
+.. -*-restructuredtext-*-
+
+==============
+Django expense
+==============
+
+This is a fairly simple personal or family expense tracking application for Django, designed to record your expenses on Django admin interface. It
+requires a functional installation of Django 1.4 or newer, but has no
+other dependencies.
+
+For installation instructions, see the "docs/install.rst" file, for
+instructions on how to use this application, and on what it provides,
+see the file "docs/userguide.rst".
+
+The actual version of the documentation can be found on `django-expense.readthedocs.org <http://django-expense.readthedocs.org/>`_ site.

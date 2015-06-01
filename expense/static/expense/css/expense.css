@@ -1,0 +1,29 @@
+.reports img
+{
+   float: left;
+   margin-right: 3px
+}
+
+#changelist {
+    overflow: auto;
+    position: static;
+    width: 100%;
+}
+
+#changelist-form {
+    margin-right: 165px;
+}
+.change-list .filtered .results, .change-list .filtered .paginator, .filtered #toolbar, .filtered div.xfull
+{
+    margin-right: 0px !important;
+}
+
+#changelist-filter 
+{
+    border-left: 1px solid #DDDDDD;
+    margin: 0;
+    position: inherit;
+    float: right;
+    width: 160px;
+    z-index: 1000;
+}

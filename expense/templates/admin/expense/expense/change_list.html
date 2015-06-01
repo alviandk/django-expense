@@ -1,0 +1,109 @@
+{% extends "admin/change_list.html" %}
+{% load i18n %}
+{% load adminmedia admin_list i18n %}
+{% load numberformat %}
+
+{% block filters %}
+{% if cl.has_filters %}
+<div id="changelist-filter">
+  <h2 class="reports"><img src="{{ media_dir }}/images/bar-chart-icon.png">{% trans 'Reports' %}</h2>
+  <h3>{% trans 'Pie charts' %}</h3>
+  <ul>
+    {% for t in types_stat %}            
+    <li>    
+      <a href="#" class="reportlink" id="pie_chart_data-{{ t.id }}-{{ current_user_id }}-{{ current_year }}-{{current_month }}">
+	{{ t.name }}
+      </a>
+    </li>  
+    {% endfor %}
+  </ul>
+  <h3>{% trans 'Bar charts' %}</h3>
+  <ul>
+    {% for t in types_stat %}            
+    <li>    
+      <a href="#" class="reportlink" id="bar_chart_data-{{ t.id }}-{{ current_user_id }}-{{ current_year }}-{{current_month }}">
+	{{ t.name }}
+      </a>
+    </li>  
+    {% endfor %}
+  </ul>
+  <h2>{% trans 'Filter' %}</h2>
+  {% for spec in cl.filter_specs %}{% admin_list_filter cl spec %}{% endfor %}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block result_list %}
+<style>
+
+ 
+ .summary
+ {
+     float: left;
+ }
+
+.change-list .filtered table {
+    margin-right: 0px !important;
+    width: 100%;
+}
+
+#wrapper {
+    margin-right: 165px !important;
+    padding: 0px;
+}
+#wrapper td {
+    vertical-align: top;
+}
+#wrapper  #left-wrapper {
+    width: 550px;
+}
+#wrapper  #right-wrapper {
+    width: 675px;
+}
+.number
+{
+     text-align: right;
+}
+
+</style>
+<table id="wrapper" cellpadding="0" cellspacing="0">
+    <tr>
+        <td id="left-wrapper">
+            {% result_list cl %}
+        </td>
+     {% for t in types_stat %}
+        <td>
+            <h2>{{ t.name }}</h2>
+            <table width="100%" cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>{% trans "Category" %}</th>
+                    <th>{% trans "Amount" %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for c in t.category_list %}
+                <tr class="{% cycle 'row1' 'row2' %}">
+                    <td>
+                        <a href="?{% if current_year %}date__year={{ current_year }}{% endif %}{% if current_month %}&amp;date__month={{ current_month }}{% endif %}{% if current_user_id %}&amp;user__id__exact={{ current_user_id }}{% endif %}&amp;category__id__exact={{ c.id }}">
+                            {{ c.name }}
+                        </a>
+                    </td>
+                    <td class="number">{{ c.category_total|numberformat }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+                <thead>
+                  <tr>
+                    <th>Total</th>
+                    <th class="number">{{ t.total|numberformat }}</th>
+                </tr>
+                </thead>
+            </table>
+        </td>
+        {% endfor %}
+    </tr>
+</table>
+<div id="dialog" title="{% trans 'Report' %}: {{current_year}}.{{current_month}}.">
+</div>
+{% endblock %}

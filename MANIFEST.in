@@ -1,0 +1,10 @@
+include INSTALL
+include LICENSE
+include MANIFEST.in
+include README
+recursive-include docs *
+recursive-include expense/templates *
+recursive-include expense/locale *
+recursive-include expense/templatetags *
+recursive-include expense/static *
+
